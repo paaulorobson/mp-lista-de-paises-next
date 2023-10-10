@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Country } from "@/app/model/types"
+import CountryCard from "@/components/country-card";
 
 async function getCountryByName(name: string): Promise<Country> {
   const response = await fetch("https://restcountries.com/v3.1/all");
@@ -89,8 +90,7 @@ export default async function CountryPage({params: {name}}: { params: {name: str
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full container gap-2">
           {borderCountries?.map((border) => (
-            border.name
-            // <CountryCard key={border.name} {...border} />
+            <CountryCard key={border.name} {...border} />
           ))}
         </div>
       </section>
